@@ -1,4 +1,4 @@
-var APIKey = "a1d4b5bd4b337a47ecafc89a2bd320c8";
+
 
 var cities = ["Boston", "London"];
 
@@ -9,7 +9,7 @@ $( document ).ready(function() {
     // If there is persistent data, query city at the end of the array
     if (cities) { 
         getCity(cities[cities.length - 1]); 
-        console.log(cityList);
+        // console.log(cityList);
         renderButtons(cities);
     }
     // if there is none query current city
@@ -56,7 +56,7 @@ $("#searchBtn").on("click", function(event) {
 
 function getCity(cityName) {
     // Here we are building the URL we need to query the database
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
+    var queryURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=" + APIKey;
 
     // We then created an AJAX call
     $.ajax({
