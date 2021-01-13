@@ -1,1 +1,21 @@
-/* Styles */
+header {
+    background-color: rgb(33, 33, 33);
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    height: 75px;
+    padding: 7px;
+}
+
+.container {
+    margin-top: 25px;
+}
+
+#city {
+    margin-bottom: 30px;
+}
+
+.stats {
+    padding-bottom: 20px;
+    /* background-color: pink; */
+}

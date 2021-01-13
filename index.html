@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link 
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+        rel="stylesheet" 
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+        crossorigin="anonymous"
+    />
+    <!-- Compressed Foundation CSS -->
+    <!-- <link 
+        rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" 
+        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" 
+        crossorigin="anonymous"
+    /> -->
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <!-- My CSS -->
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dashboard</title>
+
+</head>
+<body>
+
+    <header>Weather Dashboard</header>
+    <main class="container">
+        <div class="row">
+            <div class="col-3">
+                <aside id="search">
+                    <h5>Search for a City:</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="City" >
+                        <button class="btn btn-outline-primary" type="button" id="searchBtn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="row" id="cityHistory"></div>
+                </aside>
+            </div>
+            <div class="col-9">
+                <section id="today">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 id="city">City Here <span id="currentIcon">(ICON)</span></h3>
+                            <div id="today-stats">
+                                <h6 class="card-subtitle mb-2 text-muted stats" id="temp" >Temperature:</h6>
+                                <h6 class="card-subtitle mb-2 text-muted stats" id="humidity" >Humidity:</h6>
+                                <h6 class="card-subtitle mb-2 text-muted stats" id="wind-speed" >Wind Speed:</h6>
+                                <h6 class="card-subtitle mb-2 text-muted stats" id="uv-index" >UV Index:</h6>
+                            </div>    
+                        </div>
+                    </div>
+                </section>
+                <br>
+                <section id="week">
+                    <h4>5-Day Forecast:</h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea quae, tempora iure, eligendi, reiciendis eaque accusamus voluptas cupiditate a maxime commodi nam aperiam. Praesentium mollitia architecto facilis nesciunt similique commodi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate nam fugit placeat magnam deleniti quasi accusantium delectus commodi. Iure, aspernatur officiis quibusdam nam nulla doloribus modi eos beatae nihil nobis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam vero magni alias beatae, inventore repellendus delectus officiis architecto, earum doloribus enim sunt sapiente id sit nulla sint, nisi dolor nemo. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa eum doloremque vitae ex nam quasi, sunt dicta est quo quis soluta, quod ea aliquid architecto consequuntur natus, nobis et? Beatae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem accusantium aliquam magni necessitatibus, veniam vero provident incidunt molestiae ea beatae ipsum fugit id sapiente explicabo cupiditate nemo ex consequatur. Architecto.
+                </section>
+            </div>
+        </div>
+        
+
+        
+        
+
+    </main>
+    
+    <!-- row -->
+    <!-- column 1 (3 length) -->
+        <!-- row -->
+            <!-- Search for a City: -->
+            <!-- Text box and connected pushbutton -->
+        <!-- row -->
+            <!-- Search history -->
+    <!-- column 2 (9 length) -->
+        <!-- row -->
+            <!-- column 12 -->
+                <!-- h2 -->
+                <!-- h4 -->
+                <!-- h4 -->
+                <!-- h4 -->
+        <!-- row -->
+            <!-- row -->
+                <!-- column 1 -->
+                    <!-- title -->
+                    <!-- card -->
+                <!-- column 2 -->
+                    <!-- card -->
+                <!-- column 3 -->
+                    <!-- card -->
+
+                    <!-- etc... -->
+
+
+
+
+
+
+
+
+
+
+    <!-- Compressed JavaScript -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <!-- Day.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.3/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous"></script>
+    <!-- My script -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
+
+
+
+
+
