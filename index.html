@@ -47,26 +47,74 @@
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
-                    <div class="row" id="cityHistory"></div>
+                    <div class="row" id="city-history"></div>
                 </aside>
             </div>
             <div class="col-9">
                 <section id="today">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body shadow">
                             <h3 id="city">City Here <span id="currentIcon">(ICON)</span></h3>
                             <div id="today-stats">
-                                <h6 class="card-subtitle mb-2 text-muted stats" id="temp" >Temperature:</h6>
+                                <h6 class="card-subtitle mb-2 text-muted stats" id="temp">Temperature:</h6>
                                 <h6 class="card-subtitle mb-2 text-muted stats" id="humidity" >Humidity:</h6>
                                 <h6 class="card-subtitle mb-2 text-muted stats" id="wind-speed" >Wind Speed:</h6>
-                                <h6 class="card-subtitle mb-2 text-muted stats" id="uv-index" >UV Index:</h6>
+                                <h6 class="card-subtitle mb-2 text-muted stats">UV Index: <span id="uv-index"></span></h6>
                             </div>    
                         </div>
                     </div>
                 </section>
                 <br>
                 <section id="week">
-                    <h4>5-Day Forecast:</h4>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea quae, tempora iure, eligendi, reiciendis eaque accusamus voluptas cupiditate a maxime commodi nam aperiam. Praesentium mollitia architecto facilis nesciunt similique commodi! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cupiditate nam fugit placeat magnam deleniti quasi accusantium delectus commodi. Iure, aspernatur officiis quibusdam nam nulla doloribus modi eos beatae nihil nobis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam vero magni alias beatae, inventore repellendus delectus officiis architecto, earum doloribus enim sunt sapiente id sit nulla sint, nisi dolor nemo. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa eum doloremque vitae ex nam quasi, sunt dicta est quo quis soluta, quod ea aliquid architecto consequuntur natus, nobis et? Beatae? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem accusantium aliquam magni necessitatibus, veniam vero provident incidunt molestiae ea beatae ipsum fugit id sapiente explicabo cupiditate nemo ex consequatur. Architecto.
+                    <h4>5-Day Forecast:</h4>
+                    <div class="row">
+                        <!-- Blue forecast card 1 -->
+                        <div class="card-body forecast">
+                            <h5 id="date-1"></h5>
+                            <div id="today-stats">
+                                <img class="card-subtitle mb-2 forecast-stats" id="fc-icon-1"></img>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-temp-1">Temp: </h6>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-humidity-1">Humidity: </h6>
+                            </div>    
+                        </div>
+                        <!-- Blue forecast card 2 -->
+                        <div class="card-body forecast">
+                            <h5 id="date-2"></h5>
+                            <div id="today-stats">
+                                <img class="card-subtitle mb-2 forecast-stats" id="fc-icon-2"></img>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-temp-2">Temp: </h6>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-humidity-2">Humidity: </h6>
+                            </div>    
+                        </div>
+                        <!-- Blue forecast card 3 -->
+                        <div class="card-body forecast">
+                            <h5 id="date-3"></h5>
+                            <div id="today-stats">
+                                <img class="card-subtitle mb-2 forecast-stats" id="fc-icon-3"></img>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-temp-3"></h6>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-humidity-3"></h6>
+                            </div>    
+                        </div>
+                        <!-- Blue forecast card 4 -->
+                        <div class="card-body forecast">
+                            <h5 id="date-4"></h5>
+                            <div id="today-stats">
+                                <img class="card-subtitle mb-2 forecast-stats" id="fc-icon-4"></img>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-temp-4"></h6>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-humidity-4"></h6>
+                            </div>    
+                        </div>
+                        <!-- Blue forecast card 5 -->
+                        <div class="card-body forecast">
+                            <h5 id="date-5"></h5>
+                            <div id="today-stats">
+                                <img class="card-subtitle mb-2 forecast-stats" id="fc-icon-5"></img>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-temp-5"></h6>
+                                <h6 class="card-subtitle mb-2 forecast-stats" id="fc-humidity-5"></h6>
+                            </div>    
+                        </div>
+                        
+                    </div>
                 </section>
             </div>
         </div>
