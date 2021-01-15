@@ -4,6 +4,20 @@ let cities = [];
 let latitude = 0;
 let longitude = 0;
 
+// Initial load of document
+$( document ).ready(function() {
+    // Grab the current array from local storage
+    cities = JSON.parse(localStorage.getItem("savedCities"));
+    
+    // If there is persistent data, query city at the end of the array (Most recent search)
+    if (cities) { getLatLon(cities[cities.length - 1]); }
+    // if there is none query city base on IP address but I am not sure how to do that yet so we will just go with the default of Minneapolis
+    else { getLatLon("Minneapolis"); }
+        
+}); 
+
+// Main function that gets the latitude/longitude of a user entered city
+// If that city is not found by the API, the user will be alerted to that fact
 function getLatLon(cityName) {
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=" + APIKey;
 
@@ -11,82 +25,45 @@ function getLatLon(cityName) {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-        console.log("This one: ");
-        console.log(response);
+        // Store latitude and longitude for later queries
         latitude = response.coord.lat;
         longitude = response.coord.lon;
 
+        // If the city array has something in it
+        if(cities) {
+            // If the cityName is valid and it isn't in the current array
+            if(cityName && (cities.indexOf(cityName) === -1)) {
+                // Push city into array
+                cities.push(cityName);
+                // Keep the last 15
+                if (cities.length > 15) {
+                    cities.shift();
+                }
+            }
+        }
+        else {
+            // No local data
+            cities = [searchText];
+        }  
+        // Populate the cards with the lat lon and city name
         getCity(latitude, longitude, cityName);
+        // Render the history buttons
+        renderButtons(cities);
+        // Save the array to local storage
+        localStorage.setItem("savedCities", JSON.stringify(cities));
+
+    }, function() {
+        // Query was unsuccessful
+        alert("City not found");
     });
 }
 
-$( document ).ready(function() {
-
-    // console.log(window);
-    // console.log("Loading saved cities: " + cities);
-    cities = JSON.parse(localStorage.getItem("savedCities"));
-    // console.log("Cities loaded: " + cities);
-    // If there is persistent data, query city at the end of the array
-    if (cities) { 
-        getLatLon(cities[cities.length - 1])
-        // getCity(cities[cities.length - 1]);
-        // fiveDayForecast(cities[cities.length - 1]);
-        renderButtons(cities);  
-    }
-    // if there is none query current city
-    else { getLatLon("Minneapolis") }
-        
-});        
-
-function renderButtons(cityList) {
-    // Erase current city buttons
-    var cityHistory = $("#city-history");
-    cityHistory.html("");
-    
-    // render buttons for all cities in the cityList
-    if (cityList) {
-        for (let i = 0; i < cityList.length; i++) {
-            // Create button
-            let button = $("<button>");
-            button.attr("class", "city-button");
-            button.attr("data-name", cities[i]);
-            // Add text to button
-            button.text(cityList[i]);
-            // Add button to cityHistory
-            cityHistory.prepend(button);
-         }
-    }
-}
-
-// Search button function
-$("#searchBtn").on("click", function(event) {
-    // event.preventDefault() prevents submit button from trying to send a form.
-    // Using a submit button instead of a regular button allows the user to hit
-    // "Enter" instead of clicking the button if desired
-    event.preventDefault();
-
-    // Grab the user input
-    let searchText = $(".form-control").val().trim();
-    // If user input is there and city is not already in the array
-    if(cities) {
-        if(searchText && (cities.indexOf(searchText) === -1)) {
-            // Push city into array
-            cities.push(searchText);
-        }
-    }
-    else {
-        cities = [searchText];
-    }    
-    getLatLon(searchText);
-    localStorage.setItem("savedCities", JSON.stringify(cities));
-    renderButtons(cities);
-});
-
+// Query the city using the latitude/longitude provided by getLatLon()
 function getCity(lat, lon, city) {
-    // Database query
+    
     var queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly,minutely&appid=${APIKey}`;
 
-    // Ajax call for the DB
+    // API query
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -132,17 +109,7 @@ function getCity(lat, lon, city) {
     });
 }
 
-// Function to allow the search history to be used 
-function displayCityInfo(event) {
-    event.preventDefault();
-    let city = $(this).attr("data-name");
-    getLatLon(city);
-    // Switch button order if time permits
-} 
-// Add ability to click the city buttons in the history using DELEGATION
-$("#city-history").on("click", ".city-button", displayCityInfo);
-
-// Populating the 5-Day forecast cards
+// Populating the 5-Day forecast cards using the infomation from getCity()
 function fiveDayForecast(fcLat, fcLon, fcCity) {
 
     var queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${fcLat}&lon=${fcLon}&exclude=hourly,minutely&appid=${APIKey}`;
@@ -175,15 +142,50 @@ function fiveDayForecast(fcLat, fcLon, fcCity) {
     });    
 }
 
+// Function to render the search history buttons
+function renderButtons(cityList) {
+    // Erase current city buttons
+    var cityHistory = $("#city-history");
+    cityHistory.html("");
+    
+    // render buttons for all cities in the cityList
+    if (cityList) {
+        for (let i = 0; i < cityList.length; i++) {
+            // Create button
+            let button = $("<button>");
+            button.attr("class", "city-button");
+            button.attr("data-name", cities[i]);
+            // Add text to button
+            button.text(cityList[i]);
+            // Add button to cityHistory
+            cityHistory.prepend(button);
+         }
+    }
+}
+
+// Search button function
+$("#searchBtn").on("click", function(event) {
+    event.preventDefault();
+
+    // Grab the user input
+    let searchText = $(".form-control").val().trim();
+    // Query the API with user text
+    getLatLon(searchText);
+    
+});
+
+// Function to clear the textbox when user click inside of it
+$("#textBox").focus(function() { 
+    $(this).val(""); 
+} );
+
+// Function to allow the search history to be used as buttons
+function displayCityInfo(event) {
+    event.preventDefault();
+    let city = $(this).attr("data-name");
+    getLatLon(city);
+} 
+// Add ability to click the city buttons in the history using DELEGATION
+$("#city-history").on("click", ".city-button", displayCityInfo);
 
 
-
-
-
-
-
-
-
-// Nice to haves
-    // switch button order based on selection from history
-    // write the card in javascript
