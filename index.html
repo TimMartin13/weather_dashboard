@@ -39,19 +39,24 @@
     <main class="container">
         <div class="row">
             <div class="col-3">
+                <!-- Search textbox and history -->
                 <aside id="search">
                     <h5>Search for a City:</h5>
+                    <!-- textbox -->
                     <div class="input-group mb-3">
                         <input id="textBox" type="text" class="form-control" placeholder="City" >
                         <button class="btn btn-outline-primary" type="button" id="searchBtn">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
+                    <!-- history -->
                     <div class="row" id="city-history"></div>
                 </aside>
             </div>
+            <!-- column for the current city card and the 5 day forecast -->
             <div class="col-9">
                 <section id="today">
+                    <!-- current city card -->
                     <div class="card">
                         <div class="card-body shadow">
                             <h3 id="city">City Here <span id="currentIcon">(ICON)</span></h3>
@@ -65,6 +70,7 @@
                     </div>
                 </section>
                 <br>
+                <!-- 5 day forecast -->
                 <section id="week">
                     <h4>5-Day Forecast:</h4>
                     <div class="row">
