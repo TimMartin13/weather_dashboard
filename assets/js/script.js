@@ -43,7 +43,7 @@ function getLatLon(cityName) {
         }
         else {
             // No local data
-            cities = [searchText];
+            cities = [cityName];
         }  
         // Populate the cards with the lat lon and city name
         getCity(latitude, longitude, cityName);
@@ -70,7 +70,7 @@ function getCity(lat, lon, city) {
     }).then(function(response) {
         
         // Populate current city, date into card
-        $("#city").text(`${ city } (${ dayjs().format('MM/DD/YYYY') })`);
+        $("#city").text(`${ city } (${ dayjs.unix(response.current.dt).format('MM/DD/YYYY') })`);
         
         // Add a weather icon
         let imgIcon = $("<img>");
@@ -118,13 +118,13 @@ function fiveDayForecast(fcLat, fcLon, fcCity) {
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-
+        console.log(response);
         // Populate the forecast cards
         for (let i = 1; i < 6; i++) {
 
             // Dates
             let date = $(`#date-${i}`);
-            date.text( dayjs().add(i, 'day').format('MM/DD/YYYY') );
+            date.text( dayjs.unix(response.current.dt).add(i, 'day').format('MM/DD/YYYY') );
 
             // Icons
             let fcIcon = $(`#fc-icon-${i}`);
