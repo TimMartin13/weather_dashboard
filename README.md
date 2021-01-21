@@ -41,7 +41,10 @@ Github link: https://github.com/TimMartin13/weather_dashboard
 Published link: https://timmartin13.github.io/weather_dashboard/
 
 
+## Contat Information
 
+Phone: 612.799.1450
+Email: timmartin13@gmail.com
 
 
 
